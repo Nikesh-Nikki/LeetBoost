@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from "react-dom/client"
+import getTokens from './tokens'
 
 const domReadyCheckInterval = setInterval(
     ()=>{
@@ -18,6 +19,7 @@ function main(){
     myroot.setAttribute('id','my-root')
     myroot.classList.add('flexlayout__tab_toolbar')
     tabbar.appendChild(myroot)
+    console.log(getTokens())
     
     ReactDOM.createRoot(document.getElementById("my-root")).render(
         <button>Hellooo</button>    
