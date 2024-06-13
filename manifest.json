@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "LeetBoost",
+    "version": "1.0",
+    "description": "Improves overall coding experience on leetcode",
+    "content_scripts" : [
+        {
+        "run_at": "document_end",
+        "js": ["dist/bundle.js"],
+        "matches": [
+            "https://leetcode.com/problems/*"
+        ]
+        }
+    ]
+}
