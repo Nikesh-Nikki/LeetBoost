@@ -13,9 +13,11 @@ export default function SuggestBox({left,top,suggestedWords,hide}){
             {
                 (suggestedWords.map(
                     (word) => {
-                        <div class = "suggest-word">
-                            {word}
-                        </div>
+                        return (
+                            <div class = "suggest-word">
+                                {word}
+                            </div>
+                        )
                     }
                 ))
             }
