@@ -1,11 +1,10 @@
 import React from 'react'
 import ReactDOM from "react-dom/client"
-import getTokens from './tokens'
+import App from './App'
 
 const domReadyCheckInterval = setInterval(
     ()=>{
-        const tabbar = document.getElementById('code_tabbar_outer')
-        if(tabbar){
+        if(document.readyState == 'complete'){
             main()
             clearInterval(domReadyCheckInterval)
         }
@@ -14,15 +13,15 @@ const domReadyCheckInterval = setInterval(
 )
 
 function main(){
-    const tabbar = document.getElementById('code_tabbar_outer')
+    const body = document.body
+    //creating the root for my react component
     const myroot = document.createElement('div')
     myroot.setAttribute('id','my-root')
-    myroot.classList.add('flexlayout__tab_toolbar')
-    tabbar.appendChild(myroot)
-    console.log(getTokens())
+    //injecting element into body
+    body.appendChild(myroot)
     
     ReactDOM.createRoot(document.getElementById("my-root")).render(
-        <button>Hellooo</button>    
+        <App />  
     )
 }
     
