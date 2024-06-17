@@ -1,5 +1,5 @@
 import React from 'react'
-import SuggestBox from './SuggestBox'
+import SuggestBox from './SuggestBox.jsx'
 import { useState } from 'react'
 
 export default function App(){
