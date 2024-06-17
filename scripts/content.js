@@ -4,7 +4,8 @@ import App from './App.jsx'
 
 const domReadyCheckInterval = setInterval(
     ()=>{
-        if(document.readyState == 'complete'){
+        const textarea = document.querySelector('#editor textarea')
+        if(textarea && document.readyState == 'complete'){
             main()
             clearInterval(domReadyCheckInterval)
         }
