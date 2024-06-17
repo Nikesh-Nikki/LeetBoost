@@ -1,5 +1,11 @@
 #suggest-box {
     position: fixed;
+    width: 100px;
+    height: fit-content;
+    background-color: #2D2D30;
+    font-size: 13px;
+    font-family: Consolas, "Courier New", monospace;
+    transition: left 0.2s ease-in-out, top 0.2s ease-in-out;
 }
 
 .hide {
