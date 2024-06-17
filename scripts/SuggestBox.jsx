@@ -1,8 +1,7 @@
 import React from "react"
 import './styles/style.css'
-import { useState } from "react"
 
-export default function SuggestBox({left,top,suggestedWords}){
+export default function SuggestBox({left,top,suggestedWords,hide}){
     
     // suggestedWords contains list of words (strings)
     const position = {
@@ -10,7 +9,7 @@ export default function SuggestBox({left,top,suggestedWords}){
         top : top + 'px'
     }
     return (
-        <div id = "suggest-box" style={position}>
+        <div id = "suggest-box" style={position} className = {(hide) ? 'hide' : ''}>
             {
                 (suggestedWords.map(
                     (word) => {
