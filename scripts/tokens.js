@@ -11,10 +11,20 @@ function getQuestionNumber(){
 }
 
 function findKeyForLocalStorage( questionNumber ){
+    // the latest updated code is what we want
+    // leetcode stores the updated times for each code in format 123_123456789_cpp-updated-time
+    // so consider all the keys that end with updated-time and pick the maximum of them
+    let maximumTime = 0 
+    let reqKey
     for(let i in localStorage) {
-        if(i.startsWith(questionNumber+'_') && /[0-9]+_[0-9]+_\w+$/.test(i))
-            return i
+        if(i.endsWith('updated-time')){
+            if(+localStorage[i] > maximumTime){
+                maximumTime = +localStorage[i]
+                reqKey = i
+            }
+        }
     }
+    return reqKey.substring(0,reqKey.length - '-updated-time'.length)
 }
 
 function getTokens(){
