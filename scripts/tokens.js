@@ -30,15 +30,18 @@ function findKeyForLocalStorage( questionNumber ){
 function getTokens(){
 
     if(! this.keyForSolution ) this.keyForSolution = findKeyForLocalStorage(getQuestionNumber())
-
-    const tokens = new Set()
+    // tokens will be a object that contains word and frequency
+    const tokens = {}
     let code = localStorage[this.keyForSolution]
     // deleting all new line chars
     code = code.replaceAll(/\\n/g,' ')
     const words = code.matchAll(/[a-zA-Z_]+/g)
 
     words.forEach(
-        word => tokens.add(word[0])
+        word => {
+            if(tokens[word] === undefined) tokens[word] = 1
+            else tokens[word]++
+        }
     )
 
     return tokens
