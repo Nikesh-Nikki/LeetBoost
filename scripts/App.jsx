@@ -52,7 +52,7 @@ export default function App(){
                     }
                     if(tokens[userTyping] === 1) delete tokens[userTyping]
                     // use fuse and get suggested words
-                    const fuse = new Fuse(Object.keys(tokens) , {threshold : 0.4})
+                    const fuse = new Fuse(Object.keys(tokens) , {threshold : 0.3})
                     const suggestions = fuse.search(userTyping)
                     // set the state
                     setBoxState(
