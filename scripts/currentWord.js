@@ -9,6 +9,7 @@ function getFocussedSpan(){
             if(line.getBoundingClientRect().y == textarea.getBoundingClientRect().y) focussedLine = line
         }
     )
+    if(!focussedLine) return
     // now we need to find which span is being modified 
     const spans = focussedLine.childNodes[0].childNodes
     let focussedSpan;
@@ -29,6 +30,7 @@ function getFocussedSpan(){
 }
 
 function getIndexOfCursor(span) {
+    if(!span) return
     const textarea = document.querySelector('#editor textarea')
     const leftOfCursor = textarea.getBoundingClientRect().x - span.getBoundingClientRect().x
     const text = span.innerText
@@ -50,6 +52,7 @@ function getIndexOfCursor(span) {
 
 export default function currentWord(){
     const span = getFocussedSpan()
+    if(!span) return
     const index = getIndexOfCursor(span)
     const text = span.innerText
     const tokens = Array.from(text.matchAll(/\w+/g))
