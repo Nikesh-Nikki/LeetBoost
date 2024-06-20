@@ -35,7 +35,7 @@ function getTokens(){
     let code = localStorage[this.keyForSolution]
     // deleting all new line chars
     code = code.replaceAll(/\\n/g,' ')
-    const words = code.matchAll(/[a-zA-Z_]+/g)
+    const words = code.matchAll(/[a-zA-Z_]\w*/g)
 
     words.forEach(
         word => {
@@ -45,4 +45,8 @@ function getTokens(){
     )
 
     return tokens
+}
+
+export default {
+    getTokens
 }
