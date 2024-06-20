@@ -38,11 +38,13 @@ function getIndexOfCursor(span) {
     for( let prop of copyStyle){
         div.style[prop] = copyStyle[prop]
     }
-    div.setAttribute('id','nikkibucky')
     document.body.appendChild(div)
     for(let i = 0;i<=text.length;i++) {
         div.innerText = text.substring(0,i)
-        if(Math.abs(div.getBoundingClientRect().width - leftOfCursor) < 1) return i
+        if(Math.abs(div.getBoundingClientRect().width - leftOfCursor) < 1){
+            document.body.removeChild(div)
+            return i
+        }
     }
 }
 

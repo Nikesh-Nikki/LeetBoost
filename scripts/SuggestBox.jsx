@@ -11,7 +11,7 @@ export default function SuggestBox({left,top,suggestedWords,hide}){
     return (
         <div id = "suggest-box" style={position} className = {(hide) ? 'hide' : ''}>
             {
-                (suggestedWords.map(
+                (suggestedWords?.map(
                     (word) => {
                         return (
                             <div class = "suggest-word">
