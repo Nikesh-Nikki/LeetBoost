@@ -1,3 +1,5 @@
+import CPPKeyWords from "cppKeyWords.js";
+
 function getQuestionNumber(){
     const allAnchors = document.querySelectorAll('a')
     let questionNumber;
@@ -35,7 +37,7 @@ function getTokens(){
     let code = localStorage[this.keyForSolution]
     // deleting all new line chars
     code = code.replaceAll(/\\n/g,' ')
-    const words = code.matchAll(/[a-zA-Z_]\w*/g)
+    const words = [...CPPKeyWords , ...code.matchAll(/[a-zA-Z_]\w*/g)]
 
     words.forEach(
         word => {
