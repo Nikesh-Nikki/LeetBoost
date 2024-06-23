@@ -8,7 +8,8 @@
         "run_at": "document_end",
         "js": ["dist/bundle.js"],
         "matches": [
-            "https://leetcode.com/problems/*"
+            "https://leetcode.com/problems/*",
+            "https://leetcode.com/contest/*"
         ]
         }
     ]
