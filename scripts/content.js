@@ -1,29 +1,19 @@
-import React from 'react'
-import ReactDOM from "react-dom/client"
-import App from './App.jsx'
-
-const domReadyCheckInterval = setInterval(
-    ()=>{
-        const textarea = document.querySelector('#editor textarea')
-        if(textarea && document.readyState == 'complete'){
-            main()
-            clearInterval(domReadyCheckInterval)
-        }
-    }
-    , 100
-)
-
-function main(){
-    const body = document.body
-    //creating the root for my react component
-    const myroot = document.createElement('div')
-    myroot.setAttribute('id','my-root')
-    //injecting element into body
-    body.appendChild(myroot)
-    
-    ReactDOM.createRoot(document.getElementById("my-root")).render(
-        <App />  
-    )
+function injectScript(scriptName) {
+    const script = document.createElement('script');
+    script.src = chrome.runtime.getURL(scriptName);
+    document.documentElement.appendChild(script);
+    script.onload = function() {
+        script.remove();
+    };
 }
-    
-console.log('heheyyyy this is nikkibucky')
+
+
+async function main(){
+    const active = await chrome.runtime.sendMessage({event : 'get-active'})
+    console.log(active)
+
+    if(active.active) injectScript('/scripts/enable.js')
+}
+
+console.log('helloo')
+main()

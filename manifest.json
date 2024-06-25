@@ -3,10 +3,26 @@
     "name": "LeetBoost",
     "version": "1.0",
     "description": "Improves overall coding experience on leetcode",
+    "permissions": ["scripting", "activeTab","storage"],
+    "background": {
+        "service_worker": "scripts/service-worker.js",
+        "type" : "module"
+    },
+    "action": {
+    
+    },
+    
+    "web_accessible_resources": [
+        {
+            "resources" : ["scripts/enable.js" , "scripts/disable.js"] , 
+            "matches" : ["https://leetcode.com/*"]
+        }
+    ],
     "content_scripts" : [
         {
         "run_at": "document_end",
-        "js": ["dist/bundle.js"],
+        "js": ["scripts/content.js"],
+        "type" : "module",
         "matches": [
             "https://leetcode.com/problems/*",
             "https://leetcode.com/contest/*"
