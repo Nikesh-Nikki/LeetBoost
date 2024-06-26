@@ -32,7 +32,11 @@ chrome.runtime.onMessage.addListener(
         if(message.event == 'get-active') {
             chrome.storage.local.get(['active']).then(sendResponse)
             return true
-        } else if(message.event == 'get-snippets'){
+        } else if(message.event == 'set-active'){
+            chrome.storage.local.set({active : message.newActive})
+            return true
+        }
+        else if(message.event == 'get-snippets'){
             chrome.storage.local.get(['snippets']).then(sendResponse)
             return true
         }

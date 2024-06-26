@@ -28,7 +28,7 @@ window.addEventListener('message' , async (event)=>{
 async function main(){
     const active = await chrome.runtime.sendMessage({event : 'get-active'})
     console.log(active)
-    if(active.active) injectScript('/scripts/enable.js')
+    if(active.active) injectScript('/src/enable.js')
 }
 
 console.log('helloo')
