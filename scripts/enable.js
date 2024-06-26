@@ -41,17 +41,44 @@ function getTokens(){
     return Array.from(set)
 }
 
+function getSnippets() {
+    return (
+        [
+            {
+                trigger : "fast",
+                snippet : "ahahahaaa"
+            },
+            {
+                trigger : "cout",
+                snippet : "hahahaa cout"
+            }
+        ]
+    )
+}
+
 function makeItems(){
     const tokens = getTokens()
+    const snippets = getSnippets()
     monaco.languages.registerCompletionItemProvider('*', {
         provideCompletionItems: () => {
             const suggestions = [
-                tokens.map(
+                ...tokens.map(
                     token => {
                         return {
                             label: token,
                             kind: monaco.languages.CompletionItemKind.Text,
                             insertText: token,
+                            insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
+                            documentation: 'Recomending because it is already typed by you'
+                        }
+                    }
+                ),
+                ...snippets.map(
+                    snippet => {
+                        return {
+                            label: snippet.trigger,
+                            kind: monaco.languages.CompletionItemKind.Snippet,
+                            insertText: snippet.snippet,
                             insertTextRules: monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
                             documentation: 'Recomending because it is already typed by you'
                         }
