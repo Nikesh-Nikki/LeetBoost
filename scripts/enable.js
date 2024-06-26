@@ -11,30 +11,26 @@ const editorReadyInterval = setInterval(
                         enabled: true
                     }
                 })
-                makeItems()
+                window.postMessage(
+                    {
+                        from : 'injected-script',
+                        type : 'get-snippets'
+                    }
+                )
+                window.addEventListener('message' , (event)=>{
+                    if(event.source !== window) return
+                    if(event.data.from == 'content-script'){
+                        console.log('recieved snippets')
+                        if(event.data.type == 'set-snippets')  makeItems(event.data.snippets)
+                    }
+                })
                 clearInterval(editorReadyInterval) 
             }
         } ,
     100
 )
 
-function getSnippets() {
-    return (
-        [
-            {
-                trigger : "fast",
-                snippet : "ahahahaaa"
-            },
-            {
-                trigger : "cout",
-                snippet : "hahahaa cout"
-            }
-        ]
-    )
-}
-
-function makeItems(){
-    const snippets = getSnippets()
+async function makeItems(snippets){
     monaco.languages.registerCompletionItemProvider('*', {
         provideCompletionItems: () => {
             const suggestions = [
