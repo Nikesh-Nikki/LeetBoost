@@ -1,0 +1,17 @@
+{
+  "name": "leetboost",
+  "version": "1.0.0",
+  "description": "- Download source code from github\r - Run `npm install` and then `npx webpack`\r - Now load the extension into chrome. ( if you don't know how, follow [this](https://webkul.com/blog/how-to-install-the-unpacked-extension-in-chrome/) )",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-switch": "^7.0.0"
+  }
+}
