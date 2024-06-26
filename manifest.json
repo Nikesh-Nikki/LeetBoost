@@ -5,23 +5,23 @@
     "description": "Improves overall coding experience on leetcode",
     "permissions": ["scripting", "activeTab","storage"],
     "background": {
-        "service_worker": "scripts/service-worker.js",
+        "service_worker": "src/service-worker.js",
         "type" : "module"
     },
     "action": {
-        
+        "default_popup": "dist/index.html"
     },
     
     "web_accessible_resources": [
         {
-            "resources" : ["scripts/enable.js" , "scripts/disable.js"] , 
+            "resources" : ["src/enable.js" , "src/disable.js"] , 
             "matches" : ["https://leetcode.com/*"]
         }
     ],
     "content_scripts" : [
         {
         "run_at": "document_end",
-        "js": ["scripts/content.js"],
+        "js": ["src/content.js"],
         "type" : "module",
         "matches": [
             "https://leetcode.com/problems/*",
