@@ -12,7 +12,7 @@ const editorReadyInterval = setInterval(
                     }
                 })
                 const editor = document.getElementById('editor')
-                editor.onkeyup = ()=> makeItems()
+                editor.onkeydown = ()=> makeItems()
                 clearInterval(editorReadyInterval) 
             }
         } ,
@@ -26,7 +26,7 @@ function getTokens(){
     if(currentLangauge == 'javascript' || currentLangauge == 'typescript') return []
     // get the entire code and the extract tokens
     const code = editor.getValue()
-    const words = Array.from(code.matchAll(/\b[a-zA-Z\_]\w+\b/g))
+    const words = Array.from(code.matchAll(/\b[a-zA-Z\_]\w+/g))
     // also get current word and exclude it from the list
     const currentPosition = editor.getPosition()
     let wordAtPosition = editor.getModel().getWordAtPosition(currentPosition)
