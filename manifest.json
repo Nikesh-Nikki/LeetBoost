@@ -8,7 +8,11 @@
         "service_worker": "src/service-worker.js",
         "type" : "module"
     },
+    "icons": {
+        "128": "icons/logo.png"
+    },
     "action": {
+        "default_icon" : "icons/logo.png",
         "default_popup": "dist/index.html"
     },
     
