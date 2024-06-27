@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useState ,  useEffect } from "react";
 
 export default function Editor({snippets, editIndex, handleSubmit, handleDiscard}){
     const [triggerState , setTriggerState] = useState('')
     const [snippetState , setSnippetState] = useState('')
     const [errorState,setErrorState] = useState()
+
+    useEffect(
+        ()=>{
+            if(editIndex !== undefined) {
+                const snippet = snippets.find(s=>s.trigger===editIndex)
+                setTriggerState(snippet.trigger)
+                setSnippetState(snippet.snippet)
+            }
+        },
+        []
+    )
 
     function validate(){
         if(triggerState.length === 0) setErrorState('trigger cant be empty')

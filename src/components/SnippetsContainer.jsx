@@ -21,8 +21,8 @@ export default function SnippetsContainer(){
     )
 
     function handleSubmit(editIndex, newTrigger, newSnippet){
-        let newSnippets = snippets
-        if(editIndex !== undefined) newSnippets.splice(newSnippets.indexOf(s => s.trigger == editIndex),1)
+        let newSnippets = [...snippets]
+        if(editIndex !== undefined) newSnippets.splice(newSnippets.map(s=>s.trigger).indexOf(editIndex),1)
         newSnippets.push({
             trigger : newTrigger,
             snippet : newSnippet
@@ -44,6 +44,25 @@ export default function SnippetsContainer(){
         )
     }
 
+    function handleEdit(trigger){
+        setEdit(
+            {
+                editing : true,
+                editIndex : trigger
+            }
+        )
+    }
+
+    function handleDelete(trigger){
+        console.log('deleting '+trigger)
+        let newSnippets = [...snippets]
+        newSnippets.splice(newSnippets.map(s=>s.trigger).indexOf(trigger),1)
+        console.log('after delete')
+        console.log(newSnippets)
+        chrome.storage.local.set({snippets : newSnippets})
+        setSnippets(newSnippets)
+    }
+
     return (
         <div id = "snippets-container">
             {
@@ -61,7 +80,9 @@ export default function SnippetsContainer(){
                             snippets.map(
                                 (snippet) => {
                                     console.log(snippet)
-                                return <Snippet key={snippet.trigger} trigger={snippet.trigger} snippet={snippet.snippet} />
+                                return <Snippet key={snippet.trigger} trigger={snippet.trigger} snippet={snippet.snippet}
+                                        handleDelete = {handleDelete} handleEdit = {handleEdit}
+                                     />
                                 }
                             )
                         }
