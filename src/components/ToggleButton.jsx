@@ -6,18 +6,15 @@ export default function ToggleButton(){
   const [checked, setChecked] = useState(true);
 
   function activeChanged(){
-    chrome.runtime.sendMessage(
-      {
-        event : 'set-active',
-        newActive : !checked
-      }
-    )
+    chrome.storage.local.set({
+      active : ! checked
+    })
     setChecked((c) => ! c)
   }
 
   useEffect(
     ()=>{
-      chrome.runtime.sendMessage({event : 'get-active'}).then(
+      chrome.storage.local.get('active').then(
         res => setChecked(res.active)
       )
     } , []

@@ -7,8 +7,8 @@ export default function SnippetsContainer(){
 
     useEffect(
         () => {
-            chrome.runtime.sendMessage({event : 'get-snippets'}).then(
-                (res) =>{console.log(res) ; setSnippets(res.snippets);}
+            chrome.storage.local.get('snippets').then(
+                (res) => setSnippets(res.snippets)
             )
         } , 
         []
