@@ -36,6 +36,7 @@ button {
     justify-content: space-between;
     padding-bottom: 5px;
     border-bottom: 2px solid gray;
+    margin-bottom: 5px;
 }
 
 #snippet-header > h2 {
@@ -54,4 +55,40 @@ button {
 
 #add-button > img {
     height: 1.5em;
+}
+
+#snippet-container {
+    border-bottom: 2px solid gray;
+    margin-bottom: 5px;
+}
+
+.snippet {
+    background-color: #343434;
+    margin-bottom: 5px;
+}
+
+.snippet-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.snippet-top > .buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+#toggle-active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+#toggle-active > label {
+    display: flex;
+    align-items: center;
+}
+
+#toggle-active > label > span {
+    margin-right: 5px;
 }

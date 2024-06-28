@@ -23,7 +23,7 @@ export default function ToggleButton(){
   return (
     <div id = "toggle-active">
       <label>
-        <span> Enable/Disable AutoCorrect :  </span>
+        <span> AutoCorrect :  </span>
         <Switch
           onChange={activeChanged}
           checked={checked}
