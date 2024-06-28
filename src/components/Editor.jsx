@@ -45,10 +45,10 @@ export default function Editor({snippets, editIndex, handleSubmit, handleDiscard
             onChange={e => setSnippetState(e.target.value)}
             >
             </textarea>
-            <button id = "submit" onClick={validate}>
-                Submit
+            <button id = "save-button" onClick={validate}>
+                Save
             </button>
-            <button id="discard" onClick={handleDiscard}>
+            <button id="discard-button" onClick={handleDiscard}>
                 Discard
             </button>
         </div>

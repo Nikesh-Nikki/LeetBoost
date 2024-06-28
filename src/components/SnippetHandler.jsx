@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Snippet from "./Snippet.jsx";
 import Editor from "./Editor.jsx";
+import addSVG from '../assets/add.svg'
 
 export default function SnippetsContainer(){
 
@@ -64,7 +65,7 @@ export default function SnippetsContainer(){
     }
 
     return (
-        <div id = "snippets-container">
+        <div id = "snippet-handler">
             {
                 edit.editing ? <Editor editIndex={edit.editIndex} snippets={snippets} handleSubmit={handleSubmit} handleDiscard={handleDiscard}/> 
                 : 
@@ -72,20 +73,22 @@ export default function SnippetsContainer(){
                     <>
                         <div id = 'snippet-header'>
                             <h2>Snippets</h2>
-                            <button onClick={()=>setEdit({editing : true})}>
-                                Add
+                            <button onClick={()=>setEdit({editing : true})} id = "add-button">
+                                <img src={addSVG}></img>
                             </button>
                         </div>
-                        {
-                            snippets.map(
-                                (snippet) => {
-                                    console.log(snippet)
-                                return <Snippet key={snippet.trigger} trigger={snippet.trigger} snippet={snippet.snippet}
-                                        handleDelete = {handleDelete} handleEdit = {handleEdit}
-                                     />
-                                }
-                            )
-                        }
+                        <div id = 'snippet-container'>
+                            {
+                                snippets.map(
+                                    (snippet) => {
+                                        console.log(snippet)
+                                    return <Snippet key={snippet.trigger} trigger={snippet.trigger} snippet={snippet.snippet}
+                                            handleDelete = {handleDelete} handleEdit = {handleEdit}
+                                        />
+                                    }
+                                )
+                            }
+                        </div>
                     </>
                 )
             }

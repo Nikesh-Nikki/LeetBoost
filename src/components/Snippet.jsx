@@ -7,10 +7,10 @@ export default function Snippet({trigger,snippet,handleEdit,handleDelete}){
             <div>
                 {snippet}
             </div>
-            <button onClick = {()=>handleEdit(trigger)}>
+            <button onClick = {()=>handleEdit(trigger)} className="edit-button">
                 Edit
             </button>
-            <button onClick = {()=>handleDelete(trigger)}>
+            <button onClick = {()=>handleDelete(trigger)} className="delete-button">
                 Delete
             </button>
         </div>

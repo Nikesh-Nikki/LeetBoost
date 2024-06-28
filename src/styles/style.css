@@ -9,6 +9,11 @@ h1,h2,h3 {
     margin: 0px;
 }
 
+button {
+    border: 0;
+    cursor: pointer;
+}
+
 #header {
     font-size: 12px;
     display: flex;
@@ -16,6 +21,7 @@ h1,h2,h3 {
     align-items: center;
     width: 100%;
     margin: 20px 0px;
+    filter: drop-shadow(0 0 1rem rgb(99, 99, 99));
 }
 
 #header > img {
@@ -23,4 +29,29 @@ h1,h2,h3 {
     height: 30px;
     aspect-ratio: 1;
     margin-right: 8px;
+}
+
+#snippet-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    border-bottom: 2px solid gray;
+}
+
+#snippet-header > h2 {
+    font-size: 1.75em;
+}
+
+#add-button {
+    background-color: #0d7c07;
+    color: white;
+    border-radius: 3px;
+}
+
+#add-button:hover {
+    background-color: #0d9006;
+}
+
+#add-button > img {
+    height: 1.5em;
 }
