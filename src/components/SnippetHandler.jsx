@@ -79,14 +79,17 @@ export default function SnippetsContainer(){
                         </div>
                         <div id = 'snippet-container'>
                             {
-                                snippets.map(
-                                    (snippet) => {
-                                        console.log(snippet)
-                                    return <Snippet key={snippet.trigger} trigger={snippet.trigger} snippet={snippet.snippet}
-                                            handleDelete = {handleDelete} handleEdit = {handleEdit}
-                                        />
-                                    }
-                                )
+                                snippets.length &&
+                                    snippets.map(
+                                        (snippet) => {
+                                            console.log(snippet)
+                                        return <Snippet key={snippet.trigger} trigger={snippet.trigger} snippet={snippet.snippet}
+                                                handleDelete = {handleDelete} handleEdit = {handleEdit}
+                                            />
+                                        }
+                                    )
+                                ||
+                                <h2 style={{textAlign : "center"}}>There are no Snippets</h2>
                             }
                         </div>
                     </>

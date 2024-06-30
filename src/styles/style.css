@@ -1,7 +1,6 @@
 body {
     width: 300px;
-    height: min(auto,900px);
-    background-color: #262626;
+    background-color: #121212;
     color: white;
 }
 
@@ -60,21 +59,65 @@ button {
 #snippet-container {
     border-bottom: 2px solid gray;
     margin-bottom: 5px;
+    height: min(200px,100%);
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #1e1e1e black;
 }
 
 .snippet {
-    background-color: #343434;
+    background-color: #1e1e1e;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-bottom: 5px;
+    margin-right: 7px;
+    border-radius: 8px;
 }
 
 .snippet-top {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 35px;
 }
 
 .snippet-top > .buttons {
     display: flex;
     justify-content: space-around;
+    color: white;
+    display: none;
+}
+
+.snippet:hover .buttons {
+    display: block;
+}
+
+.buttons {
+    padding :  5px;
+}
+
+.edit-button {
+    background-color: #333;
+}
+
+.buttons img {
+    width: 20px;
+}
+
+.edit-button:hover {
+    background-color: #444;
+}
+
+.delete-button {
+    background-color: red;
+}
+
+.snippet > code {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 14px;
+    height: 32px;
+    display: block;
+    overflow: hidden;
 }
 
 #toggle-active {

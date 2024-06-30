@@ -1,4 +1,6 @@
 import React from "react";
+import edit from '../assets/edit.svg'
+import deleteSVG from '../assets/delete.svg'
 
 export default function Snippet({trigger,snippet,handleEdit,handleDelete}){
     return (
@@ -7,16 +9,16 @@ export default function Snippet({trigger,snippet,handleEdit,handleDelete}){
                 <h2 className="trigger"> { trigger } </h2>
                 <div className = 'buttons'>
                     <button onClick = {()=>handleEdit(trigger)} className="edit-button">
-                        Edit
+                        <img src={edit} />
                     </button>
                     <button onClick = {()=>handleDelete(trigger)} className="delete-button">
-                        Delete
+                        <img src={deleteSVG} />
                     </button>
                 </div>
             </div>
-            <div>
+            <code>
                 {snippet}
-            </div>
+            </code>
         </div>
     )
 }
