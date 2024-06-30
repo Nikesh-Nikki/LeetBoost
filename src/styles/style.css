@@ -92,12 +92,14 @@ button {
     display: block;
 }
 
-.buttons {
+.buttons button{
     padding :  5px;
+    border-radius: 2px;
 }
 
 .edit-button {
     background-color: #333;
+    margin-right: 5px;
 }
 
 .buttons img {

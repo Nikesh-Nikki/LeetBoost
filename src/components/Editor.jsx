@@ -43,6 +43,7 @@ export default function Editor({snippets, editIndex, handleSubmit, handleDiscard
             <input type="text" value = {triggerState} onChange={(e)=>setTriggerState(e.target.value)} placeholder="Enter Trigger word"/>
             <textarea
             value = {snippetState}
+            spellCheck = {false}
             onChange={e => setSnippetState(e.target.value)}
             placeholder="Enter Code here. Use $1, $2... in snippet to automatically place cursor at $1 and hit tab to move to next $.
                         Example : $1.push_back($2);"
