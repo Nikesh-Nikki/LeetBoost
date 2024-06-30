@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Snippet from "./Snippet.jsx";
 import Editor from "./Editor.jsx";
 import addSVG from '../assets/add.svg'
+import ToggleButton from "./ToggleButton.jsx";
 
 export default function SnippetsContainer(){
 
@@ -92,6 +93,7 @@ export default function SnippetsContainer(){
                                 <h2 style={{textAlign : "center"}}>There are no Snippets</h2>
                             }
                         </div>
+                        <ToggleButton />
                     </>
                 )
             }
