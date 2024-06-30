@@ -38,19 +38,25 @@ export default function Editor({snippets, editIndex, handleSubmit, handleDiscard
 
     return (
         <div id = "editor">
-            <div id = 'error'>{errorState}</div>
-            <input type="text" value = {triggerState} onChange={(e)=>setTriggerState(e.target.value)}/>
+            <h2>{((editIndex) ? 'Edit' : 'Add') + ' Snippet'}</h2>
+            <div id = 'error'>{errorState || ' '}</div>
+            <input type="text" value = {triggerState} onChange={(e)=>setTriggerState(e.target.value)} placeholder="Enter Trigger word"/>
             <textarea
             value = {snippetState}
             onChange={e => setSnippetState(e.target.value)}
+            placeholder="Enter Code here. Use $1, $2... in snippet to automatically place cursor at $1 and hit tab to move to next $.
+                        Example : $1.push_back($2);"
+            rows={8}
             >
             </textarea>
-            <button id = "save-button" onClick={validate}>
-                Save
-            </button>
-            <button id="discard-button" onClick={handleDiscard}>
-                Discard
-            </button>
+            <div style={{display : 'flex', justifyContent : 'space-around'}}>
+                <button id = "save-button" onClick={validate}>
+                    Save
+                </button>
+                <button id="discard-button" onClick={handleDiscard}>
+                    Discard
+                </button>
+            </div>
         </div>
     )
 }

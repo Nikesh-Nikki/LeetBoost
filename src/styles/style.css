@@ -135,3 +135,69 @@ button {
 #toggle-active > label > span {
     margin-right: 5px;
 }
+
+#editor {
+    margin: 20px;
+}
+
+#error {
+    width: 100%;
+    color: red;
+    height: 15px;
+    text-align: center;
+}
+
+#editor > h2 {
+    text-align: center;
+}
+
+#editor input, #editor textarea {
+    background-color: #2e2e2e;
+    border: 2px solid #555;
+    color: white;
+    border-radius: 5px;
+}
+
+#editor input:focus, #editor textarea:focus {
+    outline: none;
+    border: 2px solid #3D93F8;
+}
+
+#editor input {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+#editor textarea {
+    width: 100%;
+    display: block;
+    font-family: Consolas, "Courier New", monospace;
+    resize: none;
+    scrollbar-width: thin;
+    scrollbar-color: #1e1e1e black;
+    margin-bottom: 10px;
+}
+
+#save-button,#discard-button {
+    padding: 8px 20px;
+    font-size: 15px;
+    border-radius: 5px;
+    color: white;
+}
+
+#save-button:hover {
+    background-color: #0d9006;
+}
+
+#save-button {
+    background-color: #0d7c07;
+}
+
+#discard-button {
+    background-color: red;
+}
+
+#discard-button:hover {
+    background-color: rgb(197, 7, 7);
+}
