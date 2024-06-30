@@ -9,6 +9,9 @@ const editorReadyInterval = setInterval(
                     quickSuggestions: true,
                     parameterHints: {
                         enabled: true
+                    },
+                    suggest : {
+                        snippetsPreventQuickSuggestions : false
                     }
                 })
                 window.postMessage(
