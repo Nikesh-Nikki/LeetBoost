@@ -3,7 +3,7 @@
     "name": "LeetBoost",
     "version": "1.0",
     "description": "Improves overall coding experience on leetcode",
-    "permissions": ["scripting", "activeTab","storage"],
+    "permissions": ["scripting", "activeTab","storage","tabs"],
     "background": {
         "service_worker": "src/service-worker.js",
         "type" : "module"
@@ -18,7 +18,7 @@
     
     "web_accessible_resources": [
         {
-            "resources" : ["src/enable.js"] , 
+            "resources" : ["src/initialize.js","src/disable.js","src/enable.js"] , 
             "matches" : ["https://leetcode.com/*"]
         }
     ],

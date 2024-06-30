@@ -3,6 +3,7 @@ import Snippet from "./Snippet.jsx";
 import Editor from "./Editor.jsx";
 import addSVG from '../assets/add.svg'
 import ToggleButton from "./ToggleButton.jsx";
+import sendMessageToAll from "../sendMessageToAll.js";
 
 export default function SnippetsContainer(){
 
@@ -29,6 +30,7 @@ export default function SnippetsContainer(){
             trigger : newTrigger,
             snippet : newSnippet
         })
+        sendMessageToAll({event : 'refresh-snippets' , snippets : newSnippets})
         setSnippets(newSnippets)
         chrome.storage.local.set({snippets : newSnippets})
         setEdit(
@@ -62,6 +64,7 @@ export default function SnippetsContainer(){
         console.log('after delete')
         console.log(newSnippets)
         chrome.storage.local.set({snippets : newSnippets})
+        sendMessageToAll({event : 'refresh-snippets' , snippets : newSnippets})
         setSnippets(newSnippets)
     }
 

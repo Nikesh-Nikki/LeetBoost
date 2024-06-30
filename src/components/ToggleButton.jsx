@@ -1,11 +1,13 @@
 import React, { useEffect } from "react"
 import Switch from 'react-switch'
 import { useState } from "react";
+import sendMessageToAll from "../sendMessageToAll.js";
 
 export default function ToggleButton(){
   const [checked, setChecked] = useState(true);
 
   function activeChanged(){
+    sendMessageToAll( {event : 'refresh-active' , active : !checked})
     chrome.storage.local.set({
       active : ! checked
     })
