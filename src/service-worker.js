@@ -14,6 +14,10 @@ chrome.runtime.onInstalled.addListener(
                     {
                         trigger : "sort",
                         snippet : "sort($1.begin(),$1.end());"
+                    },
+                    {
+                        trigger : "pb",
+                        snippet : "$1.push_back($2);"
                     }
                 ]
             }
