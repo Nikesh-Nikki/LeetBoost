@@ -46,7 +46,7 @@ export default function Editor({snippets, editIndex, handleSubmit, handleDiscard
             spellCheck = {false}
             onChange={e => setSnippetState(e.target.value)}
             placeholder="Enter Code here. Use $1, $2... in snippet to automatically place cursor at $1 and hit tab to move to next $.
-                        Example : $1.push_back($2);"
+                        Example : $1.push_back($2); when triggered, cursor automatically starts at $1 then when you hit tab, it shifts to $2 position"
             rows={8}
             >
             </textarea>

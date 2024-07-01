@@ -3,7 +3,7 @@
     "name": "LeetBoost",
     "version": "1.0",
     "description": "Improves overall coding experience on leetcode",
-    "permissions": ["scripting", "activeTab","storage","tabs"],
+    "permissions": ["storage","tabs"],
     "background": {
         "service_worker": "src/service-worker.js",
         "type" : "module"
