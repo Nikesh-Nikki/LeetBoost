@@ -1,6 +1,9 @@
 chrome.runtime.onInstalled.addListener(
+    // this function is called after extension is installed by user
     async () => {
+        // setting active to be true at the time of installation
         await chrome.storage.local.set({active : true})
+        // some default snippets
         await chrome.storage.local.set(
             {
                 snippets : [
@@ -10,19 +13,11 @@ chrome.runtime.onInstalled.addListener(
                     },
                     {
                         trigger : "sort",
-                        snippet : "sort($1.begin(),$1.end())"
+                        snippet : "sort($1.begin(),$1.end());"
                     }
                 ]
             }
         )
-    }
-)
-
-chrome.action.onClicked.addListener(
-    async () => {
-        const state = await chrome.storage.local.get(['active'])
-        const newState = ! state
-        await chrome.storage.local.set({active : newState})   
     }
 )
 

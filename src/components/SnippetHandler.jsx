@@ -8,6 +8,9 @@ import sendMessageToAll from "../sendMessageToAll.js";
 export default function SnippetsContainer(){
 
     const [snippets,setSnippets] = useState([])
+    // editing represents if user is editing or not
+    // if editIndex is undefined, user is adding new snippet
+    // else editing some existing snipppet
     const [edit , setEdit] = useState(
         {
             editing : false
@@ -58,11 +61,8 @@ export default function SnippetsContainer(){
     }
 
     function handleDelete(trigger){
-        console.log('deleting '+trigger)
         let newSnippets = [...snippets]
         newSnippets.splice(newSnippets.map(s=>s.trigger).indexOf(trigger),1)
-        console.log('after delete')
-        console.log(newSnippets)
         chrome.storage.local.set({snippets : newSnippets})
         sendMessageToAll({event : 'refresh-snippets' , snippets : newSnippets})
         setSnippets(newSnippets)
@@ -86,7 +86,6 @@ export default function SnippetsContainer(){
                                 snippets.length &&
                                     snippets.map(
                                         (snippet) => {
-                                            console.log(snippet)
                                         return <Snippet key={snippet.trigger} trigger={snippet.trigger} snippet={snippet.snippet}
                                                 handleDelete = {handleDelete} handleEdit = {handleEdit}
                                             />
