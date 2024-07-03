@@ -7,6 +7,4 @@
 
 ### Feautures :
 - Recommends keywords while user is typing.
-- Can create code snippets and use them by triggering snippets while coding ( in progress )
-- Shows function parameters while calling a function ( in progress )
-  
+- Can create code snippets and use them by triggering snippets while coding
