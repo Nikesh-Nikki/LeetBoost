@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
-    "name": "LeetBoost",
-    "version": "1.0",
+    "name": "LeetBoost: Auto-Complete for LeetCode",
+    "version": "1.1",
     "description": "Provides context-unaware intellisense for LeetCode code editor. Allows users to make custom code snippets.",
     "permissions": ["storage","tabs"],
     "background": {
