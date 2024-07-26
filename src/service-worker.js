@@ -3,6 +3,9 @@ chrome.runtime.onInstalled.addListener(
     async () => {
         // setting active to be true at the time of installation
         await chrome.storage.local.set({active : true})
+        const res = await chrome.storage.local.get('snippets')
+        // if there are snippets already, then dont replace.
+        if(res.snippets) return
         // some default snippets
         await chrome.storage.local.set(
             {
