@@ -48,7 +48,7 @@ window.addEventListener('message' , async (event)=>{
             const res = await chrome.runtime.sendMessage({event : 'get-active'})
             leetBoostActive = res.active
             if(res.active) enableAutoCorrect()
-                editorReady = true
+            editorReady = true
         }
         // this is required to keep connection open for async data transfers
         return true
@@ -66,7 +66,7 @@ chrome.runtime.onMessage.addListener(
         } else if(message.event === 'refresh-active') {
             // if autocorrect active is changed then check if editor is ready, if it is only then activate or disable
             if(editorReady){
-                console.log('refreshint active')
+                console.log('refreshing active')
                 if(message.active) enableAutoCorrect()
                 else disableAutoCorrect()
             }
