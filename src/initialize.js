@@ -1,37 +1,40 @@
 console.log('injected script')
 
 let itemProvider
+function getEditorInstances() {
+    return window.monaco?.editor?.getEditors?.() || []
+}
 
+function waitForEditor(callback) {
+    const editors = getEditorInstances()
+    if (editors.length > 0) {
+        callback(editors)
+        return
+    }
 
-const editorReadyInterval = setInterval(
-    // before we configure monaco, the monaco editor should be ready
-    // this interval checks if the textarea in editor is focussed or not
-    // tried many checks but this turns out to be most safe and easy to implement
-    ()=>{
-        const textarea = document.querySelector('#editor textarea')
-        if(textarea && textarea == document.activeElement) {
-                clearInterval(editorReadyInterval)
-                window.addEventListener('message' , (event)=>{
-                    if(event.source !== window) return
-                    if(event.data.from == 'content-script'){
-                        // content-script sends set-snippets when injected script sends editor-ready and also when snippets are refreshed
-                        if(event.data.type == 'set-snippets') {
-                            console.log('recieved snippets from content-script')
-                            makeItems(event.data.snippets)
-                        } 
-                    }
-                }) 
-                // injected script sends editor ready event
-                window.postMessage(
-                    {
-                        from : 'injected-script',
-                        type : 'editor-ready'
-                    }
-                )
+    setTimeout(() => waitForEditor(callback), 100)
+}
+
+waitForEditor((editors) => {
+    window.addEventListener('message', (event) => {
+        if (event.source !== window) return
+        if (event.data.from === 'content-script') {
+            // content-script sends set-snippets when injected script sends editor-ready and also when snippets are refreshed
+            if (event.data.type === 'set-snippets') {
+                console.log('recieved snippets from content-script')
+                makeItems(event.data.snippets)
             }
-        } ,
-    100
-)
+        }
+    })
+
+    // injected script sends editor ready event
+    window.postMessage(
+        {
+            from: 'injected-script',
+            type: 'editor-ready'
+        }
+    )
+})
 
 // this function adds the snippets to editor
 async function makeItems(snippets){
